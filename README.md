@@ -1,9 +1,9 @@
 # NaivePy
 
-![Read the Docs](https://img.shields.io/readthedocs/naivepy) &nbsp;
-![GitHub](https://img.shields.io/github/license/prathameshdhande22/Naivepy?color=blue&style=flat-square) &nbsp;
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/naivepy?color=red&style=flat-square) &nbsp;
-![PyPI - Status](https://img.shields.io/pypi/status/naivepy?color=brown&style=flat-square)
+![Read the Docs](https://img.shields.io/readthedocs/naivepy?logo=readthedocs&logoColor=white) &nbsp;
+![GitHub](https://img.shields.io/github/license/prathameshdhande22/Naivepy?color=blue&style=flat-square&logo=github) &nbsp;
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/naivepy?color=red&style=flat-square&logo=pypi&logoColor=white) &nbsp;
+![PyPI - Status](https://img.shields.io/pypi/status/naivepy?color=success&style=flat-square&logoColor=white&logo=pypi)
 &nbsp;
 ![PyPI - Format](https://img.shields.io/pypi/format/naivepy?color=blueviolet&style=flat-square) &nbsp;
 ![GitHub last commit](https://img.shields.io/github/last-commit/prathameshdhande22/naivepy?color=success&style=flat-square)
@@ -13,9 +13,10 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/prathameshdhande22/naivepy?style=social)
 </br>
 
-![GitHub Repo stars](https://img.shields.io/badge/Made_with-Python-blue?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/badge/Made_with-Python-blue?style=for-the-badge&logo=python&logoColor=white)
 
-</br>
+# This Module Is No Longer Maintained
+v1.1 is the last release.
 
 # Naive Bayes :
 ## About Naive Bayes :
@@ -65,11 +66,11 @@ Naivepy module is built using python and pandas. It is and machine learning algo
 **Code** :
 ```
 from naivepy import Naive
-a = Naive()
-data = a.load("2data.csv")
-print(data)
-print(a.classify(["Red", "SUV", "Domestic"],"Stolen"))
-print(a.getans)
+
+n=Naive(filename="data.csv",sample_list=["red","suv","domestic"],target_column="stolen")
+print(n.getans)
+print(n.getdata)
+print(n.getlabel)
 ```
 
 **Output** :
@@ -88,8 +89,5 @@ print(a.getans)
    No
    0.072
 ```
-
-<h3>If you have any issue regarding the code or module you can contact me <a href="mailto:prathameshdhande534@gmail.com">My Mail Id</a></h3>
-</br>
 
 # Author : Prathamesh Dhande

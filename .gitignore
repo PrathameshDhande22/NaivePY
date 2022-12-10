@@ -4,3 +4,4 @@ docs/_templates/*
 build/*
 dist/*
 naivepy.egg-info/*
+naivepy/__pycache__/*

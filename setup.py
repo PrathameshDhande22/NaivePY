@@ -4,7 +4,7 @@ with open("README.md",'r') as f:
   LNG=f.read()
 
 setup(name="naivepy",
-version="1.0",
+version="1.1",
 description="Naive Algorithm Module Implemented in Python",
 author="Prathamesh Dhande",
 author_email='prathameshdhande534@gmail.com',
