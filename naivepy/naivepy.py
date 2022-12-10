@@ -4,20 +4,21 @@ from .exceptions import *
 
 class Naive:
     """Naive Bayes Algorithm which can take only two values from a targeted column label
+
+        Parameters:
+        filename : name of the file must be in csv format
+        sample_list : list of tuples want to compare
+        target_column : Target column is single only or comparing column
 """
 
-    def load(self, filename: str):
-        """Loads the File to classify the model.
+    def __init__(self, filename: str, sample_list: list, target_column: str) -> None:
+        self.__filename = filename
+        self.__list = sample_list
+        self.__target_c = target_column
+        self.__return_data = self.__load(self.__filename)
+        self.__returned_label = self.__classify(self.__list, self.__target_c)
 
-        Args:
-            filename (str): filename should be in the csv format
-
-        Raises:
-            FormatNotSupported: Exception if the filename is not in .csv format
-
-        Returns:
-            dataframe: returns filename.csv file loaded in pandas dataframe.
-        """
+    def __load(self, filename: str) -> pd.DataFrame:
         self.__filename = filename
         try:
             if not self.__filename.endswith(".csv"):
@@ -37,18 +38,7 @@ class Naive:
         total = self.__data[target].count()
         return pc1[0]/total, pc1[1]/total, pc1[0], pc1[1]
 
-    def classify(self, sample: list, target_column: str):
-        """Classifies the model from the loaded file.
-
-        But make sure that the targeted column must be in the last column of the dataset.csv
-
-        Args:
-            sample (list): List of the values to compare
-            target_column (str): targeted column from the filename.csv
-
-        Returns:
-            Str : returns the label from the targeted column 
-        """
+    def __classify(self, sample: list, target_column: str) -> str:
         pc1, pc2, c1, c2 = self.__cal_prob(target_column)
         ansc1, ansc2 = self.__calculate(sample, target_column, [c1, c2])
         if ansc1*pc1 < ansc2*pc2:
@@ -76,7 +66,7 @@ class Naive:
         return ansc1, ansc2
 
     @property
-    def getans(self):
+    def getans(self) -> float:
         """Returns the ans of the classified model
 
         Returns:
@@ -87,3 +77,21 @@ class Naive:
     def __verify(self, compare1, compare2):
         if compare1 not in compare2:
             raise ValueNotFoundException(self.__filename, compare1)
+
+    @property
+    def getdata(self)->pd.DataFrame:
+        """Returns the Loaded filename data.
+
+        Returns:
+            Dataframe : Return data in pandas.dataframe.
+        """
+        return self.__return_data
+
+    @property
+    def getlabel(self)-> str:
+        """Returns classified Label after comparing.
+
+        Returns:
+            str : Returns Label in String.
+        """
+        return self.__returned_label
