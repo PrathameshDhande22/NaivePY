@@ -14,11 +14,11 @@ Example 1:
 ::
 
    from naivepy import Naive
-   a = Naive()
-   data = a.load("2data.csv")
-   print(data)
-   print(a.classify(["Red", "SUV", "Domestic"], "Stolen"))
-   print(a.getans)
+
+   n=Naive(filename="data.csv",sample_list=["red","suv","domestic"],target_column="stolen")
+   print(n.getans)
+   print(n.getlabel)
+   print(n.getdata)
 
 **Output** :
 ::
@@ -37,38 +37,6 @@ Example 1:
    No
    0.072
 
-Example 2:
-~~~~~~~~~~~
-::
-
-   from naivepy import Naive
-
-   a=Naive()
-   data=a.load("data.csv")
-   print(data)
-   print(a.classify(['Sunny','Hot','High',False],'Play Golf'))
-   print(a.getans)
-
-**Output** :
-::
-
-   Outlook Temperature Humidity  Windy Play Golf
-   0      Rainy         Hot     High  False        No
-   1      Rainy         Hot     High   True        No
-   2   Overcast         Hot     High  False       Yes
-   3      Sunny        Mild     High  False       Yes
-   4      Sunny        Cool   Normal  False       Yes
-   5      Sunny        Cool   Normal   True        No
-   6   Overcast        Cool   Normal   True       Yes
-   7      Rainy        Mild     High  False        No
-   8      Rainy        Cool   Normal  False       Yes
-   9      Sunny        Mild   Normal  False       Yes
-   10     Rainy        Mild   Normal   True       Yes
-   11  Overcast        Mild     High   True       Yes
-   12  Overcast         Hot   Normal  False       Yes
-   13     Sunny        Mild     High   True        No
-   No
-   0.01828571428571429 
 
 Steps to Train the model
 ========================
@@ -77,21 +45,23 @@ Steps to Train the model
 
    from naivepy import Naive
 
-2. create the Object Instance of the Naive class
+2. create the Object Instance of the Naive class and the parameters to it
+::
 
-3. Load the dataset.csv
+   n=Naive(filename="data.csv",sample_list=["red","suv","domestic"],target_column="stolen")
+
+3. Get The Data in Pandas Dataframe
+::
+
+   print(n.getdata)
+
+4. Get the label after Classifying
+::
+
+   print(n.getlabel)
+
+5. Get the Ans of the target Column 
 ::
    
-   obj=Naive()
-   obj.load("filename.csv")
-
-4. classify the model 
-::
-
-   obj.classify([samplelist],targetcolumn name)
-
-5. Print the ans
-::
-
-   obj.getans
+   print(n.getans)
 
